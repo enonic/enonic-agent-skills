@@ -26,6 +26,23 @@ The directory name **must** match the file name (minus the `.xml` extension).
 </content-type>
 ```
 
+> **Note:** `allow-child-content-type` has no effect if `allow-child-content` is set to `false`.
+
+`allow-child-content-type` supports pattern matching (the same syntax as ContentSelector's MATCH mode). Examples:
+
+- `${app}:article` — match `article` type from the current application
+- `${app}:article-*` — match all types starting with `article-` from the current application
+- `base:folder` — match the built-in folder type
+- `*:quote` — match `quote` from any application
+
+### Content Type Icon
+
+A content type may optionally have its own icon. Add a PNG or SVG file with the same name in the content type directory:
+
+```
+src/main/resources/site/content-types/my-type/my-type.svg
+```
+
 ### XSD Validation Attributes
 
 Add these attributes to `<content-type>` for editor validation:
@@ -299,6 +316,44 @@ Complete list of available editor tools:
 - `param` — optional name-value parameters passed to the service as query params (repeatable)
 - `galleryMode` — `true` displays options as a three-column image gallery
 
+#### CustomSelector Service Request
+
+In addition to `param` values, the service receives these query parameters:
+
+- `ids` — array of item IDs already selected (service should return those items)
+- `start` — index of the first item expected (pagination)
+- `count` — maximum number of items expected (pagination)
+- `query` — search text typed by the user
+
+#### CustomSelector Service Response
+
+The service controller must return JSON with `total`, `count`, and `hits` properties:
+
+```json
+{
+  "total": 10,
+  "count": 2,
+  "hits": [
+    {
+      "id": "1",
+      "displayName": "Option number 1",
+      "description": "Optional description",
+      "iconUrl": "/some/path/images/icon.svg"
+    },
+    {
+      "id": "2",
+      "displayName": "Option number 2",
+      "icon": {
+        "data": "<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+        "type": "image/svg+xml"
+      }
+    }
+  ]
+}
+```
+
+Each hit must have `id` and `displayName`. Optional fields: `description`, `iconUrl`, `icon`.
+
 ### Media Inputs
 
 | Type | Value Type | Description |
@@ -403,6 +458,59 @@ Complete list of available editor tools:
 - `hideToggleIcon` — `true` hides the flat/tree toggle icon (default: `false`)
 
 By default, ContentSelector only displays content from the same site.
+
+#### Allow Content Type Pattern Matching
+
+XP uses one of two modes for content type patterns:
+
+- **`LEGACY`** — substring matching within the content type name (default before XP 7.7.0)
+- **`MATCH`** — regex-based pattern matching (current default since XP 7.7.0); the whole content type name must match
+
+Special cases in XP pattern matching:
+
+- `${app}` — template expression replaced with the current application name
+- `*` — treated as "0 or more of any character(s) except line breaks" (glob-style, not regex `*`)
+
+#### allowContentType Samples
+
+```xml
+<!-- Content type "citation" within your current application -->
+<allowContentType>citation</allowContentType>
+
+<!-- Content type "quote" from the application "my.other.app" -->
+<allowContentType>my.other.app:quote</allowContentType>
+
+<!-- Content types "quote" from any application -->
+<allowContentType>*:quote</allowContentType>
+
+<!-- Any content types from current application -->
+<allowContentType>${app}:*</allowContentType>
+
+<!-- All content types starting with "banana" -->
+<allowContentType>*:banana*</allowContentType>
+
+<!-- All content types except "base:folder" -->
+<allowContentType>^(?!base:folder$)*</allowContentType>
+```
+
+#### allowPath Samples
+
+```xml
+<!-- All content starting from the root -->
+<allowPath>*</allowPath>
+
+<!-- Only content from the current site -->
+<allowPath>${site}/*</allowPath>
+
+<!-- All children of <site>/people -->
+<allowPath>${site}/people/*</allowPath>
+
+<!-- All children of the current content -->
+<allowPath>./*</allowPath>
+
+<!-- All children of the current content's parent -->
+<allowPath>../*</allowPath>
+```
 
 ### ImageSelector Config Example
 
