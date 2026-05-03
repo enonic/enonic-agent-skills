@@ -127,7 +127,7 @@ Always use `base:structured` unless the content type has a specific reason to in
 
 Default toolbar: `Format | JustifyBlock JustifyLeft JustifyCenter JustifyRight | BulletedList NumberedList Outdent Indent | FindAndReplace SpecialChar Anchor Image Macro Link Unlink | Table | PasteModeSwitcher`
 
-Complete list of available toolbar tools:
+Complete list of available editor tools:
 
 | Tool | Description |
 |---|---|
@@ -220,6 +220,17 @@ Complete list of available toolbar tools:
 | `DateTime` | LocalDateTime / Instant | Date and time (local by default; timezone via config) |
 | `Time` | LocalTime | Time only |
 
+### Date Config
+
+```xml
+<input name="mydate" type="Date">
+  <label>My Date</label>
+  <default>2011-09-12</default>
+</input>
+```
+
+- `default` supports ISO 8601 date format (`yyyy-MM-dd`) or relative expressions (e.g., `+1year -12days`, `now`)
+
 #### DateTime Config
 
 ```xml
@@ -235,18 +246,16 @@ Complete list of available toolbar tools:
 - `timezone` — set to `true` to store value with timezone (produces `Instant`); default is `false` (produces `LocalDateTime`)
 - `default` supports ISO 8601 format (`yyyy-MM-ddThh:mm`, with optional timezone offset) or relative expressions (e.g., `+1year -12hours`, `now`)
 
-A relative datetime expression is a sequence of one or more offsets: a plus or minus sign, an integer, and a unit string.
+#### Time Config
 
-| Singular | Plural | Initial letter |
-|---|---|---|
-| `year` | `years` | `y` |
-| `month` | `months` | `M` |
-| `week` | `weeks` | `w` |
-| `day` | `days` | `d` |
-| `hour` | `hours` | `h` |
-| `minute` | `minutes` | `m` |
+```xml
+<input name="mytime" type="Time">
+  <label>My Time</label>
+  <default>13:22</default>
+</input>
+```
 
-The special value `now` means the current date and time.
+- `default` supports 24h format (`hh:mm`) or relative expressions (e.g., `+1hour -12minutes`, `now`)
 
 ### Selection Inputs
 
@@ -360,6 +369,18 @@ Each hit must have `id` and `displayName`. Optional fields: `description`, `icon
 | `GeoPoint` | GeoPoint | Latitude/longitude coordinates |
 | `Tag` | String | Free-form tags |
 
+#### GeoPoint Config
+
+```xml
+<input name="mygeopoint" type="GeoPoint">
+  <label>My GeoPoint</label>
+  <occurrences minimum="0" maximum="1"/>
+  <default>51.5,-0.1</default>
+</input>
+```
+
+- `default` specifies a default coordinate as two comma-separated decimal numbers (latitude, longitude)
+
 ### Common Input Attributes
 
 ```xml
@@ -391,21 +412,30 @@ Each hit must have `id` and `displayName`. Optional fields: `description`, `icon
     <option value="clothing">Clothing</option>
     <option value="home">Home</option>
   </config>
+  <default>electronics</default>
 </input>
 ```
+
+- `default` is optional and may be equal to one of the option `@value` attributes
 
 ### RadioButton Config Example
 
 ```xml
 <input name="priority" type="RadioButton">
   <label>Priority</label>
+  <occurrences minimum="1" maximum="1"/>
   <config>
-    <option value="low">Low</option>
-    <option value="medium">Medium</option>
-    <option value="high">High</option>
+    <option value="low" i18n="priority.low">Low</option>
+    <option value="medium" i18n="priority.medium">Medium</option>
+    <option value="high" i18n="priority.high">High</option>
   </config>
+  <default>medium</default>
 </input>
 ```
+
+- `default` is optional and may be equal to one of the option `@value` attributes
+- `i18n` on `<option>` is optional and holds the key to a localization phrase
+- Occurrences only supports `minimum` of 0 or 1; `maximum` is always 1
 
 ### ContentSelector Config Example
 
@@ -654,9 +684,9 @@ Location: `src/main/resources/site/x-data/[name]/[name].xml`
 </x-data>
 ```
 
-### X-Data Configuration in site.xml
+### X-Data Registration in site.xml
 
-Activate X-data by referencing it in the application's `site.xml`:
+X-data schemas are registered for use in `src/main/resources/site/site.xml`. Use `allowContentTypes` to restrict by content type pattern and `optional` to let editors enable it manually:
 
 ```xml
 <site>
@@ -667,16 +697,16 @@ Activate X-data by referencing it in the application's `site.xml`:
 </site>
 ```
 
-- **No attributes** — X-data is added to all content types with no option to remove it
-- `allowContentTypes` — restrict X-data to content types matching the regex pattern
-- `optional="true"` — X-data must be manually enabled in Content Wizard by the editor
+- Without `allowContentTypes` and `optional`, x-data is enabled for all content types with no option to remove it
+- `allowContentTypes` accepts a regular expression to match content type names
+- `optional="true"` requires editors to manually enable the x-data in Content Wizard
 
 ## Field Sets (Decorative Grouping)
 
 Group fields visually without affecting data structure:
 
 ```xml
-<field-set name="personalInfo">
+<field-set>
   <label>Personal Information</label>
   <items>
     <input name="firstName" type="TextLine">
@@ -689,7 +719,7 @@ Group fields visually without affecting data structure:
 </field-set>
 ```
 
-Field sets do **not** create a nested property — fields inside remain at the same level.
+Field sets do **not** need a `name` attribute since they are only visual and do **not** affect the data model — fields inside remain at the same property level.
 
 ## Documentation Links
 
