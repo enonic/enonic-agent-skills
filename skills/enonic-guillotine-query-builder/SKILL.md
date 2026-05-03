@@ -4,7 +4,7 @@ description: Composes, debugs, and optimizes Guillotine GraphQL queries for Enon
 license: MIT
 metadata:
   author: webmaxru
-  version: "1.2"
+  version: "1.3"
 ---
 
 # Enonic Guillotine Query Builder

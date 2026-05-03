@@ -4,7 +4,7 @@ description: Generates Enonic XP scripts for bulk content operations — creatin
 license: MIT
 metadata:
   author: webmaxru
-  version: "1.2"
+  version: "1.3"
 ---
 
 # Enonic Content Migration
