@@ -38,17 +38,17 @@ timeout-minutes: 30
 
 # Enonic Skill Review Worker
 
-Review the agent skill in `skills/${{ inputs.skill-name }}/` against the latest official Enonic XP documentation and propose improvements via a pull request.
+Review the agent skill in `skills/__GH_AW_EXPR_EA9FE849__/` against the latest official Enonic XP documentation and propose improvements via a pull request.
 
 ## Context
 
-- **Skill directory**: `skills/${{ inputs.skill-name }}/`
+- **Skill directory**: `skills/__GH_AW_EXPR_EA9FE849__/`
 - **Documentation root**: https://developer.enonic.com/docs
 - **Repository conventions**: Skills follow the agentskills.io style — lean `SKILL.md`, progressive disclosure through `references/` and `assets/`, deterministic helper scripts under `scripts/`.
 
 ## Process
 
-1. Read every file in `skills/${{ inputs.skill-name }}/`, including `SKILL.md`, and all files under `references/`, `assets/`, and `scripts/`. Build a complete picture of what the skill currently covers.
+1. Read every file in `skills/__GH_AW_EXPR_EA9FE849__/`, including `SKILL.md`, and all files under `references/`, `assets/`, and `scripts/`. Build a complete picture of what the skill currently covers.
 
 2. Fetch the relevant sections of the Enonic developer documentation from https://developer.enonic.com/docs. Navigate to the pages that match the skill's domain:
    - **enonic-api-reference**: XP Framework library APIs (`/lib/xp/*`), function signatures, parameters, return types.
@@ -69,17 +69,17 @@ Review the agent skill in `skills/${{ inputs.skill-name }}/` against the latest 
    - **New best practices or patterns** documented officially that the skill should incorporate.
 
 4. If meaningful improvements are identified, apply them:
-   - Edit only the files within `skills/${{ inputs.skill-name }}/`.
+   - Edit only the files within `skills/__GH_AW_EXPR_EA9FE849__/`.
    - Keep changes minimal and directly justified by the official documentation.
    - Preserve the existing skill structure, formatting style, and naming conventions.
    - Keep `SKILL.md` lean and procedural. Move bulky rules, examples, or templates into `references/` or `assets/`.
    - Use relative paths with forward slashes in all skill files.
    - Do not add `README.md`, `CHANGELOG.md`, or any per-skill documentation files.
    - Do not rename the skill folder or change the YAML `name` field in `SKILL.md` frontmatter.
-   - Do not modify files outside `skills/${{ inputs.skill-name }}/`.
+   - Do not modify files outside `skills/__GH_AW_EXPR_EA9FE849__/`.
 
 5. Create a pull request with:
-   - **Title**: `docs: update ${{ inputs.skill-name }} from latest Enonic docs`
+   - **Title**: `docs: update __GH_AW_EXPR_EA9FE849__ from latest Enonic docs`
    - **Body**: A structured summary with sections for each changed file, listing what was updated and the documentation URL that motivated the change. Include a "Checked but unchanged" section listing files that were reviewed and found to be current.
    - **Branch**: Uses the `skill-update/` prefix automatically.
 
