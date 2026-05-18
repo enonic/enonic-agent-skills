@@ -23,7 +23,7 @@ Sandboxes are isolated local XP instances, each linked to a specific XP distribu
 ### enonic sandbox create
 
 ```
-enonic sandbox create [name] [-v <version>] [-t <template>] [--skip-template] [-a] [--prod] [--skip-start] [-f]
+enonic sandbox create [name] [-v <version>] [-t <template>] [--skip-template] [-i <image>] [-a] [--prod] [--skip-start] [-f]
 ```
 
 | Flag | Description |
@@ -32,16 +32,18 @@ enonic sandbox create [name] [-v <version>] [-t <template>] [--skip-template] [-
 | `-t, --template` | Use specific template (e.g., "Headless Demo") |
 | `--skip-template` | Skip template selection (no apps pre-installed) |
 | `-v, --version` | Specific XP distro version (e.g., `7.14.0`) |
+| `-i, --image` | Docker image to back the sandbox (e.g., `enonic/xp:latest-sdk`). Requires `docker` on `$PATH`. (CLI 4.0+) |
 | `--all` | Include pre-release versions in version list |
 | `--prod` | Run XP in non-development (production) mode |
 | `--skip-start` | Do not start sandbox after creation |
-| `-f, --force` | Non-interactive mode, accept defaults |
+| `-f, --force` | Non-interactive mode, accept defaults (auto-starts sandbox unless `--skip-start` is set) |
 
 Examples:
 - `enonic sandbox create myBox -f` — latest stable version
 - `enonic sandbox create myBox -v 7.14.0` — specific version
 - `enonic sandbox create myBox -t "Headless Demo" -f` — with template
 - `enonic sandbox create myBox --skip-template -f` — no apps
+- `enonic sandbox create myBox -i enonic/xp:latest-sdk -f` — Docker-backed sandbox
 
 ### enonic sandbox ls
 
@@ -79,10 +81,10 @@ Stops the currently running sandbox (only works for sandboxes started via CLI).
 ### enonic sandbox upgrade
 
 ```
-enonic sandbox upgrade [name] [-v <version>] [-a] [-f]
+enonic sandbox upgrade [name] [-v <version>] [-i <image>] [-a] [-f]
 ```
 
-Upgrades the XP distribution for a sandbox. Downgrades are not permitted.
+Upgrades the XP distribution for a sandbox. Downgrades are not permitted. Use `-i <image>` to switch to a Docker-backed sandbox (CLI 4.0+).
 
 ### enonic sandbox delete
 
@@ -278,3 +280,33 @@ Shows version, installation name, run mode, and build details of the running XP 
 | Next.js | `starter-nextjs` | Next.js frontend with XP backend |
 
 Full list: https://market.enonic.com/starters
+
+## Cloud Commands (CLI 4.0+)
+
+Commands for managing apps in Enonic Cloud.
+
+### enonic cloud login
+
+```
+enonic cloud login [--qr]
+```
+
+Login to Enonic Cloud. Use `--qr` to display a QR code for mobile login.
+
+### enonic cloud logout
+
+```
+enonic cloud logout
+```
+
+### enonic cloud app install
+
+```
+enonic cloud app install [-j <jar-path>] [-t <timeout>] [-y]
+```
+
+| Flag | Description |
+|------|-------------|
+| `-j` | Jar to deploy (default: `./build/libs/*.jar`) |
+| `-t` | Upload timeout in seconds (default: 300) |
+| `-y` | Skip confirmation prompt |
