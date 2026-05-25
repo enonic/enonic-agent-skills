@@ -315,6 +315,23 @@ The `ContentType` type returned by `getType` and `getTypes` includes utility fie
 | `getInstances(offset, first, query, sort)` | `[Content]` | Contents of this type |
 | `getInstanceConnection(after, first, query, sort)` | `ContentConnection` | Contents of this type as a connection |
 
+## Media Type URL Fields
+
+Media content types (`media_Image`, `media_Vector`, etc.) expose additional URL fields not present on the base `Content` interface:
+
+| Field | Type | Description |
+|---|---|---|
+| `imageUrl(scale: String!, quality: Int, type: UrlType, params: Json)` | `String` | Scaled image URL. `scale` controls dimensions (e.g. `"block(800,200)"`, `"width(600)"`). `params` is `Json` type in Guillotine 7+ |
+| `mediaUrl(download: Boolean, type: UrlType, params: Json)` | `String` | Media download/inline URL. `params` is `Json` type in Guillotine 7+ |
+
+These fields are accessed via inline fragments on the specific media type:
+
+```graphql
+... on media_Image {
+  imageUrl(scale: "block(800,200)", type: absolute)
+}
+```
+
 ## Key Enum Types
 
 | Enum | Values |
