@@ -157,17 +157,28 @@ import httpClient from '/lib/http-client';
 
 ### request(params)
 
-| Parameter      | Type    | Description                                    |
-|----------------|---------|------------------------------------------------|
-| url            | string  | Target URL                                     |
-| method         | string  | HTTP method (GET, POST, PUT, DELETE)            |
-| headers        | object  | Request headers                                |
-| body           | string  | Request body                                   |
-| contentType    | string  | Content-Type header                            |
-| connectionTimeout | number | Connection timeout in ms                    |
-| readTimeout    | number  | Read timeout in ms                             |
+| Parameter         | Type    | Description                                    |
+|-------------------|---------|------------------------------------------------|
+| url               | string  | Target URL (required)                          |
+| method            | string  | HTTP method (GET, POST, PUT, DELETE). Default `GET` |
+| headers           | object  | Request headers                                |
+| body              | string/stream | Request body                             |
+| contentType       | string  | Content-Type header                            |
+| queryParams       | object  | Query parameters appended to the URL           |
+| params            | object  | Form parameters (ignored if `queryParams` is set) |
+| connectionTimeout | number  | Connection timeout in ms (default 10000)       |
+| readTimeout       | number  | Read timeout in ms (default 10000)             |
+| followRedirects   | boolean | If `false`, return 3xx responses directly instead of following redirects |
+| multipart         | object[]| Multipart form data. Each part: `name`, `value` (string or stream), optional `fileName` and `contentType` |
+| auth              | object  | Basic authentication: `{ user, password }`     |
+| proxy             | object  | Proxy settings: `{ host, port, user?, password? }` |
+| certificates      | stream  | PEM-encoded certificates replacing default CAs |
+| clientCertificate | stream  | PEM-encoded client certificate with private key (PKCS #8) |
+| disableHttp2      | boolean | Disable HTTP/2 protocol (default `false`). Added in v3.2.0 |
 
-**Returns:** Response object with `status`, `body`, `headers`, `contentType`, `message`.
+**Returns:** Response object with `status`, `body`, `bodyStream`, `headers`, `cookies`, `contentType`, `message`.
+
+- `body` is `null` when the response content-type is not text; use `bodyStream` for binary content.
 
 ### Example: POST to External API
 

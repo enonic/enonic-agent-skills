@@ -372,7 +372,36 @@ Get a count of blog posts per category:
 }
 ```
 
-## 14. In DSL with Typed Value Arrays
+## 14. Scaled Image URL from Media Content
+
+Query image content and generate a scaled image URL:
+
+```graphql
+{
+  guillotine {
+    queryDsl(
+      query: {
+        term: {
+          field: "type"
+          value: { string: "media:image" }
+        }
+      }
+      first: 10
+    ) {
+      displayName
+      ... on media_Image {
+        imageUrl(scale: "block(800,200)", type: absolute)
+        data {
+          caption
+          artist
+        }
+      }
+    }
+  }
+}
+```
+
+## 15. In DSL with Typed Value Arrays
 
 Fetch content matching any of several category values using `in` with `stringValues`:
 
@@ -397,6 +426,28 @@ Fetch content matching any of several category values using `in` with `stringVal
           title
           category
         }
+      }
+    }
+  }
+}
+```
+
+## 15. Scaled Image URL for Media Content
+
+Query image content and generate a scaled, absolute URL:
+
+```graphql
+{
+  guillotine {
+    queryDsl(query: {
+      term: {
+        field: "type"
+        value: { string: "media:image" }
+      }
+    }, first: 10) {
+      displayName
+      ... on media_Image {
+        imageUrl(scale: "block(800,200)", type: absolute)
       }
     }
   }

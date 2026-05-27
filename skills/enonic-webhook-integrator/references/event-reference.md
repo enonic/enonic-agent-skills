@@ -30,7 +30,7 @@ Creates an event listener.
 | callback   | function | Function receiving the event object                                      |
 | localOnly  | boolean  | If `true`, only local events; default `false`                            |
 
-**Returns:** `null`
+**Returns:** `void`
 
 **Example:**
 
@@ -102,6 +102,10 @@ Node events are emitted when repository nodes (including content) change.
 }
 ```
 
+Additional properties appear on specific event types:
+- **`node.moved`**: Each node entry includes `newPath` (string) — the destination path after the move or rename.
+- **`node.stateUpdated`**: The `data` object includes `state` (string) — the new state value.
+
 ### Path Filtering
 
 Filter events by inspecting `event.data.nodes[].path`:
@@ -166,7 +170,7 @@ const taskId = taskLib.executeFunction({
 
 Submits a named task (defined by a task descriptor XML and controller) for asynchronous execution.
 
-**Parameters:** Object with `descriptor` (string — `<appKey>:<taskName>`), `config` (object — task configuration properties).
+**Parameters:** Object with `descriptor` (string — `<appKey>:<taskName>`), `name` (optional string — override task name; defaults to the descriptor key), `config` (object — task configuration properties).
 
 **Returns:** `string` — Task ID.
 
@@ -218,7 +222,29 @@ Reports progress from inside a running task.
 
 ### list(params?)
 
-Returns running tasks. Optional filter by `name` and `state`.
+Returns running tasks. Optional filter by `name` (string pattern) and `state` (`WAITING`, `RUNNING`, `FINISHED`, `FAILED`).
+
+### get(taskId)
+
+Returns the current state and progress details for the specified task.
+
+**Parameters:** `taskId` (string).
+
+**Returns:** `TaskInfo` object or `null` if the task was not found.
+
+### isRunning(task)
+
+Checks if any task with the given name or id is currently running.
+
+**Parameters:** `task` (string — name or id).
+
+**Returns:** `boolean` — `true` if a task with the specified name or id has state `RUNNING`.
+
+### sleep(timeMillis)
+
+Causes the current execution thread to sleep for the specified number of milliseconds. Useful for throttling or polling inside long-running tasks.
+
+**Parameters:** `timeMillis` (number).
 
 ### Task Events
 

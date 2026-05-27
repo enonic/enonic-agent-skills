@@ -20,11 +20,15 @@ The directory name **must** match the file name (minus the `.xml` extension).
   <is-built-in>false</is-built-in>                                 <!-- optional, default false -->
   <allow-child-content>true</allow-child-content>                  <!-- optional, default true -->
   <allow-child-content-type>base:folder</allow-child-content-type> <!-- optional, repeatable -->
-  <form>
+  <form>                                                           <!-- required -->
     <!-- inputs, item-sets, option-sets, field-sets, mixin refs -->
   </form>
 </content-type>
 ```
+
+- `display-name` (required): Human-readable name of the content type. The optional `i18n` attribute maps to a localization key in the application's resource bundle.
+- `display-name-label` (optional; since v7.1): Overrides the default `<Display Name>` placeholder shown in the content form when editors create new content of this type.
+- `form` (required): The custom form definition containing inputs, item-sets, option-sets, field-sets, and mixin references.
 
 > **Note:** `allow-child-content-type` has no effect if `allow-child-content` is set to `false`.
 
@@ -246,7 +250,20 @@ Complete list of available editor tools:
 ```
 
 - `timezone` — set to `true` to store value with timezone (produces `Instant`); default is `false` (produces `LocalDateTime`)
-- `default` supports ISO 8601 format (`yyyy-MM-ddThh:mm`, with optional timezone offset) or relative expressions (e.g., `+1year -12hours`, `now`)
+- `default` supports ISO 8601 format (`yyyy-MM-ddThh:mm`, with optional timezone offset like `+01:00` or `Z`) or relative expressions (e.g., `+1year -12hours`, `now`)
+
+**Relative expression unit strings:**
+
+| Singular | Plural | Initial letter |
+|---|---|---|
+| `year` | `years` | `y` |
+| `month` | `months` | `M` |
+| `week` | `weeks` | `w` |
+| `day` | `days` | `d` |
+| `hour` | `hours` | `h` |
+| `minute` | `minutes` | `m` |
+
+A relative expression is one or more offsets (e.g., `+3days -2hours`). The keyword `now` means current date and time.
 
 #### Time Config
 
@@ -579,6 +596,7 @@ Present a set of mutually exclusive or multi-select options, each with optional 
 ```xml
 <option-set name="blockType">
   <label>Block Type</label>
+  <help-text>Select the type of content block</help-text>
   <occurrences minimum="0" maximum="0"/>
   <help-text>Create content with optional blocks</help-text>
   <options minimum="1" maximum="1">

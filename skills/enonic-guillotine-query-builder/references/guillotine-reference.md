@@ -61,8 +61,13 @@ All content types share these fields. Custom content types add a `data` field.
 | `_id` | `ID!` | Content ID |
 | `_name` | `String!` | Content name |
 | `_path(type: ContentPathType)` | `String!` | Full or site-relative path |
+| `_references` | `[Content]` | Outbound content references |
+| `_score` | `Float` | Relevance score (available on search results) |
+| `_project` | `String` | Project name |
+| `_branch` | `String` | Branch name (`draft` or `master`) |
 | `displayName` | `String` | Display name |
 | `type` | `String` | Content type descriptor |
+| `contentType` | `ContentType` | Typed content type metadata (name, form, icon) |
 | `creator` | `PrincipalKey` | Content creator |
 | `modifier` | `PrincipalKey` | Last content modifier |
 | `owner` | `PrincipalKey` | Content owner |
@@ -73,18 +78,27 @@ All content types share these fields. Custom content types add a `data` field.
 | `hasChildren` | `Boolean` | Has children |
 | `dataAsJson` | `JSON` | Raw data as JSON |
 | `xAsJson` | `JSON` | Extra data as JSON |
-| `pageAsJson` | `JSON` | Page specific information |
+| `pageAsJson(resolveTemplate: Boolean, resolveFragment: Boolean)` | `JSON` | Page specific information |
 | `parent` | `Content` | Parent content |
 | `site` | `portal_Site` | Link to nearest site |
 | `children(offset, first, sort)` | `[Content]` | Direct children |
 | `childrenConnection(after, first, sort)` | `ContentConnection` | Children as a connection |
-| `publish` | `PublishInfo` | from, to, first timestamps |
+| `publish` | `PublishInfo` | from, to, first, time timestamps |
 | `attachments` | `[Attachment]` | File attachments |
-| `components` | `[Component]` | Page components (flattened) |
+| `components(resolveTemplate: Boolean, resolveFragment: Boolean)` | `[Component]` | Page components (flattened) |
 | `pageUrl(type: UrlType, params: Json)` | `String` | Generated URL for this content. `params` is `Json` type in Guillotine 7+ |
 | `pageTemplate` | `Content` | Related page template content |
 | `x` | `[ExtraData]` | eXtra Data |
 | `permissions` | `Permissions` | Content permissions |
+
+### Media-Specific Fields
+
+Content types under `media:*` additionally expose:
+
+| Field | Type | Notes |
+|---|---|---|
+| `mediaUrl(download: Boolean, type: UrlType, params: Json)` | `String` | URL to the media attachment |
+| `imageUrl(scale: String!, quality: Int, type: UrlType, background: String, format: String, filter: String, params: Json)` | `String` | Scaled image URL (`media:image` only) |
 
 ## Inline Fragments for Custom Types
 
@@ -314,6 +328,24 @@ The `ContentType` type returned by `getType` and `getTypes` includes utility fie
 |---|---|---|
 | `getInstances(offset, first, query, sort)` | `[Content]` | Contents of this type |
 | `getInstanceConnection(after, first, query, sort)` | `ContentConnection` | Contents of this type as a connection |
+| `formAsJson` | `JSON` | Content type form schema as JSON |
+
+## Media Type URL Fields
+
+Media content types (`media_Image`, `media_Vector`, etc.) expose additional URL fields not present on the base `Content` interface:
+
+| Field | Type | Description |
+|---|---|---|
+| `imageUrl(scale: String!, quality: Int, type: UrlType, params: Json)` | `String` | Scaled image URL. `scale` controls dimensions (e.g. `"block(800,200)"`, `"width(600)"`). `params` is `Json` type in Guillotine 7+ |
+| `mediaUrl(download: Boolean, type: UrlType, params: Json)` | `String` | Media download/inline URL. `params` is `Json` type in Guillotine 7+ |
+
+These fields are accessed via inline fragments on the specific media type:
+
+```graphql
+... on media_Image {
+  imageUrl(scale: "block(800,200)", type: absolute)
+}
+```
 
 ## Key Enum Types
 

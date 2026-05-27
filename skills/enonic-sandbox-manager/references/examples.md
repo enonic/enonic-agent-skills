@@ -116,3 +116,29 @@ enonic create my-headless-app -r starter-headless -s headless-box -f
 cd my-headless-app
 enonic dev
 ```
+
+## Workflow 11: Docker-Backed Sandbox (CLI 4.0+)
+
+```bash
+# Create a sandbox backed by a Docker image (requires docker on PATH)
+enonic sandbox create docker-box -i enonic/xp:latest-sdk -f
+
+# Create project linked to the Docker-backed sandbox
+enonic create my-app -r starter-vanilla -s docker-box -f
+
+cd my-app
+enonic dev
+```
+
+## Workflow 12: Deploy to Enonic Cloud (CLI 4.0+)
+
+```bash
+# Login to Enonic Cloud
+enonic cloud login
+
+# Build the project
+enonic project build
+
+# Deploy to cloud (uses ./build/libs/*.jar by default)
+enonic cloud app install -y
+```

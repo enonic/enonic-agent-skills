@@ -25,6 +25,11 @@
 | Sort DSL (JSON format) | 7.9 | Alternative to string-based sort |
 | Min/Max/Value Count aggregations | 7.7 | Standalone metric aggregations |
 | Term aggregation `minDocCount` | 7.7 | Filter sparse buckets |
+| Query `_sort`/`_score` behavior | 7.5 | When `sort` is specified, `_sort` is returned and `_score` is null |
+| `contentLib.resetInheritance()` | 7.6 | Resets custom inheritance flags for content layers |
+| `contextLib.run()` `attributes` | 7.8 | Custom attributes in run context |
+| `repo.getCommit()` | 7.7 | Get commit info for a node version commit |
+| `multiRepoConnect()` | 7.0 | Connect to multiple repositories for cross-repo queries |
 
 ## Branch Handling
 

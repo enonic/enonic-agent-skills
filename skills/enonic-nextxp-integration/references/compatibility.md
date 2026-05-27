@@ -11,6 +11,7 @@ Version requirements and compatibility notes for the Next.js + Enonic XP integra
 | Next.js | 16.x (App Router) | Latest stable |
 | React | 19.x | Latest stable |
 | @enonic/nextjs-adapter | 4.x | Latest stable |
+| html-react-parser | 5.x (peer dep) | Latest stable |
 | Enonic XP | 7.x | Latest stable |
 | Guillotine app | Installed in XP | Latest from marketplace |
 | Next.XP app (preview) | Installed in XP | Latest from marketplace |
