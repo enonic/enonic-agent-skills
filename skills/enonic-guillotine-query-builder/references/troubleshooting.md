@@ -85,7 +85,7 @@ queryDsl(
 |---|---|
 | `params` argument type error on `pageUrl` | In Guillotine 7, `params` is `Json` type, not `String`. Update the argument type. Also applies to `mediaUrl`, `imageUrl`, and `attachmentUrl`. |
 | Subscriptions not working | GraphQL subscriptions are removed in Guillotine 7. Implement a custom solution. |
-| `siteConfig` not available | Site configuration is no longer obtainable from `dataAsJson`, `site`, or `portal_Site.dataAsJson` fields in Guillotine 7. |
+| `siteConfig` not available | Site configuration is no longer obtainable from `dataAsJson`, `site`, or `portal_Site.dataAsJson` fields in Guillotine 7. Use the `getSiteConfig` function from the Content Lib (`/lib/xp/content`) instead. |
 | URLs changed from relative to absolute | Guillotine 7 generates absolute (server) URLs by default for all URL fields and `processedHtml`. Adjust client URL handling. |
 
 ## CORS and Request Issues
