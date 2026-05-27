@@ -11,8 +11,8 @@ The directory name **must** match the file name (minus the `.xml` extension).
 
 ```xml
 <content-type>
-  <display-name i18n="cty.mytype.displayname">Human-Readable Name</display-name> <!-- required; i18n optional -->
-  <display-name-label i18n="cty.mytype.label">Override placeholder</display-name-label> <!-- optional, since v7.1 -->
+  <display-name i18n="localization.key">Human-Readable Name</display-name>
+  <display-name-label i18n="localization.label.key">Override placeholder</display-name-label>   <!-- optional; since XP 7.1 -->
   <description>Short description</description>                     <!-- optional -->
   <super-type>base:structured</super-type>                         <!-- required -->
   <is-abstract>false</is-abstract>                                 <!-- optional, default false -->
@@ -31,6 +31,8 @@ The directory name **must** match the file name (minus the `.xml` extension).
 - `form` (required): The custom form definition containing inputs, item-sets, option-sets, field-sets, and mixin references.
 
 > **Note:** `allow-child-content-type` has no effect if `allow-child-content` is set to `false`.
+
+> **Note:** The optional `i18n` attribute on `<display-name>`, `<display-name-label>`, `<label>`, and `<help-text>` holds a key to a localization phrase defined in the application's resource bundle.
 
 `allow-child-content-type` supports pattern matching (the same syntax as ContentSelector's MATCH mode). Examples:
 
@@ -596,10 +598,11 @@ Present a set of mutually exclusive or multi-select options, each with optional 
   <label>Block Type</label>
   <help-text>Select the type of content block</help-text>
   <occurrences minimum="0" maximum="0"/>
+  <help-text>Create content with optional blocks</help-text>
   <options minimum="1" maximum="1">
     <option name="text">
       <label>Text Block</label>
-      <help-text>A rich-text content block</help-text>
+      <help-text>A rich text content block</help-text>
       <items>
         <input name="body" type="HtmlArea">
           <label>Body</label>
@@ -622,7 +625,7 @@ Present a set of mutually exclusive or multi-select options, each with optional 
 
 - `options/@maximum="1"` — single-select mode
 - Each option can be empty or contain `<items>`
-- `<help-text>` is supported on both the option-set itself and individual options
+- `<help-text>` can be added to the option-set itself and to individual `<option>` elements
 
 ### Multi-Select (checkbox-style)
 
@@ -634,6 +637,7 @@ Present a set of mutually exclusive or multi-select options, each with optional 
   <options minimum="0" maximum="3">
     <option name="wifi">
       <label>WiFi</label>
+      <help-text>Wireless internet access included</help-text>
       <default>true</default>
     </option>
     <option name="parking">
