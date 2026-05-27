@@ -20,7 +20,7 @@ import contentLib from '/lib/xp/content';
 | `contentLib.publish()` | Push content from draft to master |
 | `contentLib.unpublish()` | Remove content from master branch |
 | `contentLib.exists()` | Check if content exists at path or id |
-| `contentLib.get()` | Fetch a single content item |
+| `contentLib.get()` | Fetch a single content item (supports `versionId` for historical versions) |
 | `contentLib.getChildren()` | Fetch children with pagination |
 | `contentLib.getOutboundDependencies()` | List outbound content references by key (XP 7.2+) |
 | `contentLib.archive()` | Archive content (XP 7.8+) |
@@ -36,9 +36,12 @@ contentLib.query({
   filters: {},       // Boolean, exists, notExists, hasValue, ids
   sort: '',          // Sort expression or DSL
   aggregations: {},  // Aggregation definitions
-  contentTypes: []   // Content type filter array
+  contentTypes: [],  // Content type filter array
+  highlight: {}      // Highlighting config (field-level hit highlighting)
 });
 ```
+
+> *(XP 7.5.0+)* If `sort` was specified, results will contain `_sort` and `_score: null`. Otherwise `_score` will have a relevant value.
 
 ### Create Parameters
 
@@ -98,12 +101,21 @@ contentLib.publish({
 ### Import and Connect
 
 ```typescript
-import { connect } from '/lib/xp/node';
+import { connect, multiRepoConnect } from '/lib/xp/node';
 
 const repo = connect({
   repoId: 'com.enonic.cms.default',
   branch: 'draft'
 });
+
+// For cross-repository migration queries:
+const multiRepo = multiRepoConnect({
+  sources: [
+    { repoId: 'com.enonic.cms.default', branch: 'draft' },
+    { repoId: 'com.enonic.cms.myproject', branch: 'draft' }
+  ]
+});
+// multiRepo.query() hits include repoId and branch fields
 ```
 
 ### Key Functions
@@ -115,7 +127,7 @@ const repo = connect({
 | `repo.modify()` | Modify node via editor callback |
 | `repo.delete()` | Delete nodes by key |
 | `repo.move()` | Move or rename a node |
-| `repo.push()` | Push nodes to another branch |
+| `repo.push()` | Push nodes to another branch; supports `exclude` to skip specific nodes |
 | `repo.diff()` | Compare node versions across branches |
 | `repo.exists()` | Check node existence |
 | `repo.get()` | Fetch nodes by id or path |
