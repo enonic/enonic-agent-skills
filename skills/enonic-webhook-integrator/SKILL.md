@@ -4,7 +4,7 @@ description: Sets up Enonic XP event listeners, webhook configurations, and exte
 license: MIT
 metadata:
   author: webmaxru
-  version: "1.4"
+  version: "1.5"
 ---
 
 # Enonic Webhook Integrator
