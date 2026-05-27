@@ -272,7 +272,13 @@ Key adapter imports:
 
 Server-side imports (from `@enonic/nextjs-adapter/server`):
 - `fetchContent(params)` — fetches content and resolves component mappings.
-- `fetchContentPathsForAllLocales(basePath)` — generates paths for SSG.
+- `fetchContentPathsForAllLocales(basePath)` — generates paths for SSG across all locales.
+- `fetchContentPathsForLocale(basePath, locale)` — generates paths for SSG for a single locale.
+- `fetchGuillotine(contentApiUrl, options?)` — makes a custom request to Guillotine; used internally by `fetchContent()`.
+- `fetchFromApi(apiUrl, body, options?)` — lower-level HTTP POST to any API endpoint.
+- `getLocaleMapping(locale)` — resolves locale to project/site mapping from `ENONIC_MAPPINGS`.
+- `getLocaleMappingByLocale(locale)` — alias for `getLocaleMapping`.
+- `getLocaleMappingByProjectId(projectId)` — resolves project ID to its locale mapping.
 
 Client-side imports (from `@enonic/nextjs-adapter/client`):
 - `useLocaleContext()` — React hook returning `{locale, localize}` for client-side components.
@@ -283,6 +289,14 @@ View imports:
 - `RegionView` from `@enonic/nextjs-adapter/views/Region` — renders a single named region (used in layouts).
 - `RichTextView` from `@enonic/nextjs-adapter/views/RichTextView` — renders rich text fields with embedded images, links, and macros.
 - `PropsView` from `@enonic/nextjs-adapter/views/PropsView` — debug view that displays raw props.
+
+Additional types and utilities:
+- `MetaData` — type for runtime metadata (apiUrl, baseUrl, locale, defaultLocale, renderMode).
+- `RichTextData` — type for the rich text data shape returned by `richTextQuery`.
+- `LocaleContextType` — type for the value returned by `useLocaleContext`.
+- `Replacer` — type for custom element replacement functions used with `RichTextView`'s `customReplacer` prop.
+- `RENDER_MODE` — enum-like constant for render mode detection (`NEXT`, `INLINE`, `EDIT`, `PREVIEW`, `LIVE`, `ADMIN`).
+- `UrlProcessor` — URL processing class; use `UrlProcessor.setSiteKey(key)` to set the site key for URL resolution.
 
 ## Page Components with Regions
 
