@@ -237,6 +237,8 @@ Refreshes indices in the current repository.
 | repo | string | com.enonic.cms.default | Repository id |
 | branch | string | master | Branch |
 
+> **Note:** `com.enonic.cms.default` is the legacy default repository — now deprecated and hidden unless enabled via configuration. Pass an explicit `repo` of `com.enonic.cms.<project-name>` (e.g. `com.enonic.cms.myproject`) rather than relying on the default.
+
 ### Events
 
 | Event | Description |

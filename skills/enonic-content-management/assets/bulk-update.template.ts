@@ -1,6 +1,9 @@
 // Bulk Update Controller Template
 // Adapt this template for batch content update operations in Enonic XP.
 // Replace placeholders marked with [PLACEHOLDER] before use.
+// 'com.enonic.cms.myproject' is a placeholder repository ID — replace 'myproject'
+// with your content project name (pattern: com.enonic.cms.<project-name>).
+// Do not use the deprecated 'com.enonic.cms.default' repository.
 
 import contentLib from '/lib/xp/content';
 import contextLib from '/lib/xp/context';
@@ -20,7 +23,7 @@ export function run(): string {
     description: TASK_DESCRIPTION,
     func: () => {
       contextLib.run({
-        repository: 'com.enonic.cms.default',
+        repository: 'com.enonic.cms.myproject',
         branch: 'draft',
         principals: ['role:system.admin']
       }, () => {
