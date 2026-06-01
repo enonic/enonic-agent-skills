@@ -4,7 +4,7 @@ description: Generates Enonic XP content type XML schema definitions from natura
 license: MIT
 metadata:
   author: webmaxru
-  version: "1.4"
+  version: "1.5"
 ---
 
 # Enonic XP Content Type Generator
