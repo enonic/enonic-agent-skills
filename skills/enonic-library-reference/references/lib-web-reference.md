@@ -1,9 +1,8 @@
-# lib-i18n, lib-websocket, and lib-sse API Reference
+# lib-i18n and lib-websocket API Reference
 
 > Sources:
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-i18n
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-websocket
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-sse
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-i18n
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-websocket
 
 ---
 
@@ -117,97 +116,3 @@ Returns the number of sockets in a group. *(XP 7.6.0+)*
 | group | string | Group name |
 
 **Returns:** `number`
-
----
-
-## lib-sse
-
-**Import:** `import sseLib from '/lib/xp/sse';`
-**Gradle:** `include "com.enonic.xp:lib-sse:${xpVersion}"`
-
-> Server-Sent Events: push one-way messages to clients connected to an HTTP service that emits an SSE stream. Client ids and lifecycle events (`open`, `close`) arrive via the service's `sseEvent` callback.
-
-### send
-
-Sends a message to a specific SSE connection.
-
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| clientId | string | yes | Client id from the `open` event |
-| message | object | yes | Message to send (see Message shape) |
-
-**Returns:** `void`
-
-### sendToGroup
-
-Sends a message to all connections in a named group.
-
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| group | string | yes | Group name |
-| message | object | yes | Message to send (see Message shape) |
-
-**Returns:** `void`
-
-### close
-
-Closes an SSE connection. The connection's `sseEvent` function receives a `close` event.
-
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| clientId | string | yes | Client id |
-
-**Returns:** `void`
-
-### isOpen
-
-Checks whether an SSE connection is still open.
-
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| clientId | string | yes | Client id |
-
-**Returns:** `boolean`
-
-### addToGroup
-
-Adds a connection to a named group.
-
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| group | string | yes | Group name |
-| clientId | string | yes | Client id |
-
-**Returns:** `void`
-
-### removeFromGroup
-
-Removes a connection from a named group.
-
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| group | string | yes | Group name |
-| clientId | string | yes | Client id |
-
-**Returns:** `void`
-
-### getGroupSize
-
-Returns the number of connections currently in a group.
-
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| group | string | yes | Group name |
-
-**Returns:** `number`
-
-### Message shape
-
-Messages accept these optional fields:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| event | string | Event name |
-| data | string | Event payload |
-| id | string | Event id for `Last-Event-ID` reconnection tracking |
-| comment | string | SSE comment line (ignored by clients) |

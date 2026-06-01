@@ -1,10 +1,10 @@
 # lib-io, lib-mail, lib-repo, and lib-schema API Reference
 
 > Sources:
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-io
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-mail
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-repo
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-schema
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-io
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-mail
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-repo
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-schema
 
 ---
 
@@ -330,4 +330,4 @@ Updates a dynamic site descriptor.
 
 Deletes a dynamic site descriptor.
 
-> For full parameter details, consult the official documentation at https://developer.enonic.com/docs/code/stable/libraries/lib-schema
+> For full parameter details, consult the official documentation at https://developer.enonic.com/docs/xp/7.x/api/lib-schema

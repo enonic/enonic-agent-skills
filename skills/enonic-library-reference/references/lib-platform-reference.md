@@ -1,13 +1,13 @@
 # lib-admin, lib-app, lib-auditlog, lib-cluster, lib-common, lib-grid, and lib-vhost API Reference
 
 > Sources:
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-admin
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-app
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-auditlog
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-cluster
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-common
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-grid
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-vhost
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-admin
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-app
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-auditlog
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-cluster
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-common
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-grid
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-vhost
 
 ---
 

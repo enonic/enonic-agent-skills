@@ -2,7 +2,7 @@
 
 Canonical reference for the Next.js + Enonic XP integration framework (Next.XP). Covers adapter configuration, component registry, rendering modes, Guillotine queries, preview architecture, and deployment.
 
-Source: https://developer.enonic.com/docs/next.xp/stable
+Source: https://developer.enonic.com/learn/next.xp/stable
 
 ## Architecture Overview
 

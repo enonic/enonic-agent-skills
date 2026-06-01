@@ -90,7 +90,7 @@ The concrete install commands for each available skill are listed in the relevan
 
 ### Enonic Library Reference Skill
 
-`skills/enonic-library-reference` provides a server-side JavaScript/TypeScript API reference for all `/lib/xp/*` libraries. It covers function signatures, parameters, return types, and usage examples for lib-content, lib-node, lib-auth, lib-portal, lib-context, lib-event, lib-task, lib-repo, lib-io, lib-mail, lib-schema, lib-project, lib-export, lib-scheduler, lib-value, lib-i18n, lib-websocket, lib-sse, lib-admin, lib-app, lib-auditlog, lib-cluster, lib-common, lib-grid, and lib-vhost.
+`skills/enonic-library-reference` provides a server-side JavaScript/TypeScript API reference for all `/lib/xp/*` libraries. It covers function signatures, parameters, return types, and usage examples for lib-content, lib-node, lib-auth, lib-portal, lib-context, lib-event, lib-task, lib-repo, lib-io, lib-mail, lib-schema, lib-project, lib-export, lib-scheduler, lib-value, lib-i18n, lib-websocket, lib-admin, lib-app, lib-auditlog, lib-cluster, lib-common, lib-grid, and lib-vhost.
 
 Install with APM:
 
@@ -121,7 +121,7 @@ Its support files are split by purpose:
 - `references/lib-context-reference.md` for lib-context, lib-event, and lib-task functions
 - `references/lib-utilities-reference.md` for lib-io, lib-mail, lib-repo, and lib-schema functions
 - `references/lib-cms-reference.md` for lib-project, lib-export, lib-scheduler, and lib-value functions
-- `references/lib-web-reference.md` for lib-i18n, lib-websocket, and lib-sse functions
+- `references/lib-web-reference.md` for lib-i18n and lib-websocket functions
 - `references/lib-platform-reference.md` for lib-admin, lib-app, lib-auditlog, lib-cluster, lib-common, lib-grid, and lib-vhost functions
 - `references/examples.md` for cross-library usage patterns
 - `references/troubleshooting.md` for common errors and version-compatibility notes

@@ -1,7 +1,7 @@
 # Guillotine GraphQL API Reference
 
 Condensed reference for composing Guillotine queries against Enonic XP.
-Source: https://developer.enonic.com/docs/guillotine/stable/api
+Source: https://developer.enonic.com/docs/guillotine/stable
 
 Guillotine 7.x is the current stable release (requires XP 7.14.0+).
 

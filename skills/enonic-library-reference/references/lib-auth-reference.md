@@ -1,6 +1,6 @@
 # lib-auth API Reference
 
-> Source: https://developer.enonic.com/docs/code/stable/libraries/lib-auth
+> Source: https://developer.enonic.com/docs/xp/7.x/api/lib-auth
 
 **Import:** `import authLib from '/lib/xp/auth';`
 **Gradle:** `include "com.enonic.xp:lib-auth:${xpVersion}"`

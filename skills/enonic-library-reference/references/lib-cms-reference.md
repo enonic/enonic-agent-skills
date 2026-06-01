@@ -1,10 +1,10 @@
 # lib-project, lib-export, lib-scheduler, and lib-value API Reference
 
 > Sources:
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-project
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-export
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-scheduler
-> - https://developer.enonic.com/docs/code/stable/libraries/lib-value
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-project
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-export
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-scheduler
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-value
 
 ---
 
