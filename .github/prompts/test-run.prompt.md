@@ -1,7 +1,7 @@
 ---
 name: "Test Run"
 description: "Execute the full test suite for Enonic XP agent skills against a Docker-based test environment. Covers script testing, template validation, functional skill testing, and reference accuracy checks."
-argument-hint: "Optional scope: 'all' (default), 'scripts', 'templates', 'skills', 'references', or a specific skill name like 'enonic-sandbox-manager'"
+argument-hint: "Optional scope: 'all' (default), 'scripts', 'templates', 'skills', 'references', or a specific skill name like 'enonic-app-manager'"
 agent: "agent"
 ---
 
@@ -30,7 +30,7 @@ Test the deterministic scanner scripts against the test project at `.test-infra/
 
 ### 1a. Test find-enonic-targets.mjs (all 5 variants)
 
-For each variant in these skills: `enonic-content-migration`, `enonic-webhook-integrator`, `enonic-content-type-generator`, `enonic-sandbox-manager`, `enonic-controller-generator`:
+For each variant in these skills: `enonic-content-management`, `enonic-event-manager`, `enonic-content-type-generator`, `enonic-app-manager`, `enonic-controller-generator`:
 
 1. Run against `.test-infra/projects/myproject/` → should detect project markers
 2. Run against `.test-infra/output/` (no Enonic markers) → should return empty or exit code 1
@@ -91,7 +91,7 @@ docker exec enonic-xp-test rm /enonic-xp/home/deploy/<app>.jar
 docker cp <new-app>.jar enonic-xp-test:/enonic-xp/home/deploy/
 ```
 
-### 3.1 enonic-sandbox-manager
+### 3.1 enonic-app-manager
 - Detect workspace context, test CLI commands, validate CI template, check reference accuracy
 
 ### 3.2 enonic-content-type-generator
@@ -102,12 +102,12 @@ docker cp <new-app>.jar enonic-xp-test:/enonic-xp/home/deploy/
 - Generate page "main-page", part "hero-banner", layout "two-column"
 - Generate XML + TS + HTML for each, build, deploy, verify in XP
 
-### 3.4 enonic-api-reference
+### 3.4 enonic-library-reference
 - Verify 9+ API functions across lib-content, lib-node, lib-auth, lib-portal, lib-context
 - Compare signatures, return types, examples against official docs
 - Validate import template paths, troubleshooting scenarios, code examples
 
-### 3.5 enonic-content-migration
+### 3.5 enonic-content-management
 - Create migration service using bulk-update template pattern
 - Execute NoQL queries, batch modify with editor callback, publish to master
 - Verify data integrity in both draft and master branches
@@ -117,7 +117,7 @@ docker cp <new-app>.jar enonic-xp-test:/enonic-xp/home/deploy/
 - Test pagination with cursors, aggregations with `aggregationsAsJson`
 - Test introspection and type-name derivation
 
-### 3.7 enonic-webhook-integrator
+### 3.7 enonic-event-manager
 - Create event listener for node.pushed events
 - Create inbound HTTP service controller
 - Deploy, test outbound events on publish, test inbound POST/error cases

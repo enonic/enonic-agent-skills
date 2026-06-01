@@ -16,13 +16,13 @@ The repository follows the [agentskills.io](https://agentskills.io) style: lean 
   - [Install via Plugin Marketplace (recommended)](#install-via-plugin-marketplace-recommended)
   - [Install Individual Skills](#install-individual-skills)
 - [Skills in This Repository](#skills-in-this-repository)
-  - [Enonic API Reference Skill](#enonic-api-reference-skill)
-  - [Enonic Content Migration Skill](#enonic-content-migration-skill)
+  - [Enonic Library Reference Skill](#enonic-library-reference-skill)
+  - [Enonic Content Management Skill](#enonic-content-management-skill)
   - [Enonic Content Type Generator Skill](#enonic-content-type-generator-skill)
   - [Enonic Guillotine Query Builder Skill](#enonic-guillotine-query-builder-skill)
   - [Enonic Next.XP Integration Skill](#enonic-nextxp-integration-skill)
-  - [Enonic Sandbox Manager Skill](#enonic-sandbox-manager-skill)
-  - [Enonic Webhook Integrator Skill](#enonic-webhook-integrator-skill)
+  - [Enonic App Manager Skill](#enonic-app-manager-skill)
+  - [Enonic Event Manager Skill](#enonic-event-manager-skill)
   - [Enonic Controller Generator Skill](#enonic-controller-generator-skill)
 - [Repository Conventions](#repository-conventions)
 - [Common Workflows](#common-workflows)
@@ -88,20 +88,20 @@ The concrete install commands for each available skill are listed in the relevan
 
 ## Skills in This Repository
 
-### Enonic API Reference Skill
+### Enonic Library Reference Skill
 
-`skills/enonic-api-reference` provides a server-side JavaScript/TypeScript API reference for all `/lib/xp/*` libraries. It covers function signatures, parameters, return types, and usage examples for lib-content, lib-node, lib-auth, lib-portal, lib-context, lib-event, lib-task, lib-repo, lib-io, lib-mail, and lib-schema.
+`skills/enonic-library-reference` provides a server-side JavaScript/TypeScript API reference for all `/lib/xp/*` libraries. It covers function signatures, parameters, return types, and usage examples for lib-content, lib-node, lib-auth, lib-portal, lib-context, lib-event, lib-task, lib-repo, lib-io, lib-mail, lib-schema, lib-project, lib-export, lib-scheduler, lib-value, lib-i18n, lib-websocket, lib-sse, lib-admin, lib-app, lib-auditlog, lib-cluster, lib-common, lib-grid, and lib-vhost.
 
 Install with APM:
 
 ```bash
-apm install webmaxru/enonic-agent-skills/skills/enonic-api-reference
+apm install webmaxru/enonic-agent-skills/skills/enonic-library-reference
 ```
 
 Install with npm:
 
 ```bash
-npx skills add webmaxru/enonic-agent-skills --skill enonic-api-reference
+npx skills add webmaxru/enonic-agent-skills --skill enonic-library-reference
 ```
 
 It covers:
@@ -120,24 +120,27 @@ Its support files are split by purpose:
 - `references/lib-portal-reference.md` for lib-portal function signatures and usage
 - `references/lib-context-reference.md` for lib-context, lib-event, and lib-task functions
 - `references/lib-utilities-reference.md` for lib-io, lib-mail, lib-repo, and lib-schema functions
+- `references/lib-cms-reference.md` for lib-project, lib-export, lib-scheduler, and lib-value functions
+- `references/lib-web-reference.md` for lib-i18n, lib-websocket, and lib-sse functions
+- `references/lib-platform-reference.md` for lib-admin, lib-app, lib-auditlog, lib-cluster, lib-common, lib-grid, and lib-vhost functions
 - `references/examples.md` for cross-library usage patterns
 - `references/troubleshooting.md` for common errors and version-compatibility notes
 - `assets/enonic-imports.template.ts` for a reusable import block template
 
-### Enonic Content Migration Skill
+### Enonic Content Management Skill
 
-`skills/enonic-content-migration` generates Enonic XP scripts for bulk content operations — creating, updating, querying, migrating, and transforming content using lib-content and lib-node APIs.
+`skills/enonic-content-management` generates Enonic XP scripts for bulk content operations — creating, updating, querying, migrating, and transforming content using lib-content and lib-node APIs.
 
 Install with APM:
 
 ```bash
-apm install webmaxru/enonic-agent-skills/skills/enonic-content-migration
+apm install webmaxru/enonic-agent-skills/skills/enonic-content-management
 ```
 
 Install with npm:
 
 ```bash
-npx skills add webmaxru/enonic-agent-skills --skill enonic-content-migration
+npx skills add webmaxru/enonic-agent-skills --skill enonic-content-management
 ```
 
 It covers:
@@ -255,20 +258,20 @@ Its support files are split by purpose:
 - `references/troubleshooting.md` for preview failures, blank pages, and configuration issues
 - `assets/nextxp-page.template.tsx` for a reusable page component template
 
-### Enonic Sandbox Manager Skill
+### Enonic App Manager Skill
 
-`skills/enonic-sandbox-manager` guides developers through Enonic CLI commands for sandbox management, project scaffolding, local development, app deployment, and CI/CD pipeline generation.
+`skills/enonic-app-manager` guides developers through Enonic CLI commands for sandbox management, project scaffolding, local development, app deployment, and CI/CD pipeline generation.
 
 Install with APM:
 
 ```bash
-apm install webmaxru/enonic-agent-skills/skills/enonic-sandbox-manager
+apm install webmaxru/enonic-agent-skills/skills/enonic-app-manager
 ```
 
 Install with npm:
 
 ```bash
-npx skills add webmaxru/enonic-agent-skills --skill enonic-sandbox-manager
+npx skills add webmaxru/enonic-agent-skills --skill enonic-app-manager
 ```
 
 It covers:
@@ -289,20 +292,20 @@ Its support files are split by purpose:
 - `assets/sandbox-setup.template.sh` for a sandbox setup script template
 - `scripts/find-enonic-targets.mjs` for deterministic scanning of Enonic XP project markers
 
-### Enonic Webhook Integrator Skill
+### Enonic Event Manager Skill
 
-`skills/enonic-webhook-integrator` sets up Enonic XP event listeners, webhook configurations, and external system integrations triggered by content lifecycle events.
+`skills/enonic-event-manager` sets up Enonic XP event listeners, webhook configurations, and external system integrations triggered by content lifecycle events.
 
 Install with APM:
 
 ```bash
-apm install webmaxru/enonic-agent-skills/skills/enonic-webhook-integrator
+apm install webmaxru/enonic-agent-skills/skills/enonic-event-manager
 ```
 
 Install with npm:
 
 ```bash
-npx skills add webmaxru/enonic-agent-skills --skill enonic-webhook-integrator
+npx skills add webmaxru/enonic-agent-skills --skill enonic-event-manager
 ```
 
 It covers:
@@ -375,7 +378,7 @@ When adding or revising a skill here, keep these rules intact:
 ### Scan a Workspace for Enonic XP Targets
 
 ```bash
-node skills/enonic-content-migration/scripts/find-enonic-targets.mjs .
+node skills/enonic-content-management/scripts/find-enonic-targets.mjs .
 ```
 
 The scanner locates Enonic XP project markers: `build.gradle` with `com.enonic.xp` dependencies, `src/main/resources/` directory structure, and `gradle.properties` with `xpVersion`.

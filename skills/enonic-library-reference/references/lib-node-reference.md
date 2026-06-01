@@ -1,6 +1,6 @@
 # lib-node API Reference
 
-> Source: https://developer.enonic.com/docs/xp/stable/api/lib-node
+> Source: https://developer.enonic.com/docs/code/stable/libraries/lib-node
 
 **Import:** `import nodeLib from '/lib/xp/node';`
 **Gradle:** `include "com.enonic.xp:lib-node:${xpVersion}"`

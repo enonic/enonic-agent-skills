@@ -1,6 +1,6 @@
 # lib-content API Reference
 
-> Source: https://developer.enonic.com/docs/xp/stable/api/lib-content
+> Source: https://developer.enonic.com/docs/code/stable/libraries/lib-content
 
 **Import:** `import contentLib from '/lib/xp/content';`
 **Gradle:** `include "com.enonic.xp:lib-content:${xpVersion}"`

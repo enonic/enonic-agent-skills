@@ -1,13 +1,13 @@
 ---
-name: enonic-api-reference
-description: Enonic XP server-side JavaScript/TypeScript API reference for all /lib/xp/* libraries. Provides function signatures, parameters, return types, and usage examples for lib-content, lib-node, lib-auth, lib-portal, lib-context, lib-event, lib-task, lib-repo, lib-io, lib-mail, and lib-schema. Use when looking up Enonic XP library functions, parameter shapes, return types, or usage examples. Do not use for Guillotine GraphQL queries, content type schema definitions, Enonic CLI commands, or non-Enonic JavaScript APIs.
+name: enonic-library-reference
+description: Enonic XP server-side JavaScript/TypeScript API reference for all /lib/xp/* libraries. Provides function signatures, parameters, return types, and usage examples for lib-content, lib-node, lib-auth, lib-portal, lib-context, lib-event, lib-task, lib-repo, lib-io, lib-mail, lib-schema, lib-project, lib-export, lib-scheduler, lib-value, lib-i18n, lib-websocket, lib-sse, lib-admin, lib-app, lib-auditlog, lib-cluster, lib-common, lib-grid, and lib-vhost. Use when looking up Enonic XP library functions, parameter shapes, return types, or usage examples. Do not use for Guillotine GraphQL queries, content type schema definitions, Enonic CLI commands, or non-Enonic JavaScript APIs.
 license: MIT
 metadata:
   author: webmaxru
-  version: "1.2"
+  version: "1.3"
 ---
 
-# Enonic XP Server-Side API Reference
+# Enonic XP Server-Side Library Reference
 
 ## Procedures
 
@@ -24,6 +24,9 @@ metadata:
    | lib-portal | `references/lib-portal-reference.md` |
    | lib-context, lib-event, lib-task | `references/lib-context-reference.md` |
    | lib-io, lib-mail, lib-repo, lib-schema | `references/lib-utilities-reference.md` |
+   | lib-project, lib-export, lib-scheduler, lib-value | `references/lib-cms-reference.md` |
+   | lib-i18n, lib-websocket, lib-sse | `references/lib-web-reference.md` |
+   | lib-admin, lib-app, lib-auditlog, lib-cluster, lib-common, lib-grid, lib-vhost | `references/lib-platform-reference.md` |
 
 3. If the query spans multiple libraries or asks for a usage pattern, read `references/examples.md`.
 
@@ -63,6 +66,6 @@ metadata:
 
 ## Error Handling
 
-- If a function is not found in any reference file, report that it may belong to a community library or a newer XP version not yet documented, and suggest checking https://developer.enonic.com/docs/xp/stable/api.
+- If a function is not found in any reference file, report that it may belong to a community library or a newer XP version not yet documented, and suggest checking https://developer.enonic.com/docs/code/stable/libraries.
 - If the query relates to Guillotine/GraphQL, content type schemas, or Enonic CLI, indicate that this skill does not cover those topics.
 - If a version mismatch is suspected, consult the version compatibility table in `references/troubleshooting.md`.

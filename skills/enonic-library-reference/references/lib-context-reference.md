@@ -1,9 +1,9 @@
 # lib-context, lib-event, and lib-task API Reference
 
 > Sources:
-> - https://developer.enonic.com/docs/xp/stable/api/lib-context
-> - https://developer.enonic.com/docs/xp/stable/api/lib-event
-> - https://developer.enonic.com/docs/xp/stable/api/lib-task
+> - https://developer.enonic.com/docs/code/stable/libraries/lib-context
+> - https://developer.enonic.com/docs/code/stable/libraries/lib-event
+> - https://developer.enonic.com/docs/code/stable/libraries/lib-task
 
 ---
 

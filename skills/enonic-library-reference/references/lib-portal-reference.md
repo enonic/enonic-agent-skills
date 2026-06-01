@@ -1,6 +1,6 @@
 # lib-portal API Reference
 
-> Source: https://developer.enonic.com/docs/xp/stable/api/lib-portal
+> Source: https://developer.enonic.com/docs/code/stable/libraries/lib-portal
 
 **Import:** `import portalLib from '/lib/xp/portal';`
 **Gradle:** `include "com.enonic.xp:lib-portal:${xpVersion}"`
