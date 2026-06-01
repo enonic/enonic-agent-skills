@@ -17,7 +17,7 @@ Enonic XP supports both TypeScript and JavaScript controllers.
 
 - File extension: `.ts`
 - Use ES module syntax: `import ... from '...';` and `export function get(req) { ... }`
-- Requires TypeScript to be configured in the project. Refer to the [TypeScript documentation](https://developer.enonic.com/docs/xp/stable/development/typescript).
+- Requires TypeScript to be configured in the project. Refer to the [TypeScript documentation](https://developer.enonic.com/docs/xp/7.x/development/typescript).
 - Type definitions available via `@enonic-types/core` and `@enonic-types/lib-portal`.
 
 ### JavaScript Controllers

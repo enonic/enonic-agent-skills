@@ -1,10 +1,10 @@
 # lib-io, lib-mail, lib-repo, and lib-schema API Reference
 
 > Sources:
-> - https://developer.enonic.com/docs/xp/stable/api/lib-io
-> - https://developer.enonic.com/docs/xp/stable/api/lib-mail
-> - https://developer.enonic.com/docs/xp/stable/api/lib-repo
-> - https://developer.enonic.com/docs/xp/stable/api/lib-schema
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-io
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-mail
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-repo
+> - https://developer.enonic.com/docs/xp/7.x/api/lib-schema
 
 ---
 
@@ -237,6 +237,8 @@ Refreshes indices in the current repository.
 | repo | string | com.enonic.cms.default | Repository id |
 | branch | string | master | Branch |
 
+> **Note:** `com.enonic.cms.default` is the legacy default repository — now deprecated and hidden unless enabled via configuration. Pass an explicit `repo` of `com.enonic.cms.<project-name>` (e.g. `com.enonic.cms.myproject`) rather than relying on the default.
+
 ### Events
 
 | Event | Description |
@@ -328,4 +330,4 @@ Updates a dynamic site descriptor.
 
 Deletes a dynamic site descriptor.
 
-> For full parameter details, consult the official documentation at https://developer.enonic.com/docs/xp/stable/api/lib-schema
+> For full parameter details, consult the official documentation at https://developer.enonic.com/docs/xp/7.x/api/lib-schema

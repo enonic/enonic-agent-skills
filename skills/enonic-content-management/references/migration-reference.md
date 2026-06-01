@@ -98,20 +98,22 @@ contentLib.publish({
 
 ## Node API (lib-node) Quick Reference
 
+> **Repository ID is a placeholder.** `com.enonic.cms.myproject` follows the pattern `com.enonic.cms.<project-name>` — replace `myproject` with your content project's name. Avoid the legacy `com.enonic.cms.default` repository: it is deprecated and hidden unless enabled via configuration.
+
 ### Import and Connect
 
 ```typescript
 import { connect, multiRepoConnect } from '/lib/xp/node';
 
 const repo = connect({
-  repoId: 'com.enonic.cms.default',
+  repoId: 'com.enonic.cms.myproject',
   branch: 'draft'
 });
 
 // For cross-repository migration queries:
 const multiRepo = multiRepoConnect({
   sources: [
-    { repoId: 'com.enonic.cms.default', branch: 'draft' },
+    { repoId: 'com.enonic.cms.myproject', branch: 'draft' },
     { repoId: 'com.enonic.cms.myproject', branch: 'draft' }
   ]
 });
@@ -338,7 +340,7 @@ repo.refresh('SEARCH');
 import contextLib from '/lib/xp/context';
 
 const result = contextLib.run({
-  repository: 'com.enonic.cms.default',
+  repository: 'com.enonic.cms.myproject',
   branch: 'draft',
   principals: ['role:system.admin']
 }, () => {
@@ -350,7 +352,7 @@ const result = contextLib.run({
 
 ```typescript
 const published = contextLib.run({
-  repository: 'com.enonic.cms.default',
+  repository: 'com.enonic.cms.myproject',
   branch: 'master',
   principals: ['role:system.admin']
 }, () => {

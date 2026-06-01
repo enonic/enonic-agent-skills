@@ -42,7 +42,11 @@ When running migration scripts outside Content Studio (e.g. via task controllers
 
 ## Content Repository ID
 
-The default content repository is `com.enonic.cms.default`. Multi-project setups (XP 7.0+) may use different project-based repository IDs like `com.enonic.cms.myproject`. Verify the repository ID:
+A content project's repository ID follows the pattern `com.enonic.cms.<project-name>` — for a project named `myproject` it is `com.enonic.cms.myproject`. The repository IDs in these examples and templates use `com.enonic.cms.myproject` as a **placeholder**; replace `myproject` with your actual content project name.
+
+> **Avoid `com.enonic.cms.default`.** The legacy default repository is deprecated and hidden unless explicitly enabled via configuration. Target an explicit `com.enonic.cms.<project-name>` repository instead, or read the current repository from the execution context.
+
+To verify the repository ID in your current execution context:
 
 ```typescript
 const context = contextLib.get();

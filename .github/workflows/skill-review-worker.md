@@ -51,14 +51,14 @@ Review the agent skill in `skills/__GH_AW_EXPR_EA9FE849__/` against the latest o
 1. Read every file in `skills/__GH_AW_EXPR_EA9FE849__/`, including `SKILL.md`, and all files under `references/`, `assets/`, and `scripts/`. Build a complete picture of what the skill currently covers.
 
 2. Fetch the relevant sections of the Enonic developer documentation from https://developer.enonic.com/docs. Navigate to the pages that match the skill's domain:
-   - **enonic-api-reference**: XP Framework library APIs (`/lib/xp/*`), function signatures, parameters, return types.
+   - **enonic-library-reference**: XP Framework library APIs (`/lib/xp/*`), function signatures, parameters, return types.
    - **enonic-content-type-generator**: Content type schemas, XML schema definitions, input types, mixins.
-   - **enonic-content-migration**: Node API, content API, data import/export, task API for batch operations.
+   - **enonic-content-management**: Node API, content API, data import/export, task API for batch operations.
    - **enonic-controller-generator**: HTTP controllers for pages, parts, layouts; request/response handling.
    - **enonic-guillotine-query-builder**: Guillotine GraphQL API, HeadlessCMS queries, schema introspection.
    - **enonic-nextxp-integration**: Next.js integration with Enonic XP, front-end rendering, component mapping.
-   - **enonic-sandbox-manager**: Enonic CLI commands, sandbox lifecycle, development environment setup.
-   - **enonic-webhook-integrator**: Event listeners, HTTP services, webhook patterns, event types.
+   - **enonic-app-manager**: Enonic CLI commands, sandbox lifecycle, development environment setup.
+   - **enonic-event-manager**: Event listeners, HTTP services, webhook patterns, event types.
 
 3. Compare the skill's content against the fetched documentation. Identify:
    - **New APIs, parameters, or features** added to Enonic XP that the skill does not yet cover.

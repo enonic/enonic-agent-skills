@@ -2,6 +2,9 @@
 // Adapt this template for long-running content import/migration operations.
 // Place the final controller in src/main/resources/tasks/{taskName}/{taskName}.ts
 // Replace placeholders marked with [PLACEHOLDER] before use.
+// 'com.enonic.cms.myproject' is a placeholder repository ID — replace 'myproject'
+// with your content project name (pattern: com.enonic.cms.<project-name>).
+// Do not use the deprecated 'com.enonic.cms.default' repository.
 
 import contentLib from '/lib/xp/content';
 import contextLib from '/lib/xp/context';
@@ -22,7 +25,7 @@ exports.run = function (config: TaskConfig): void {
   const dryRun = config.dryRun === 'true';
 
   contextLib.run({
-    repository: 'com.enonic.cms.default',
+    repository: 'com.enonic.cms.myproject',
     branch: 'draft',
     principals: ['role:system.admin']
   }, () => {
@@ -102,7 +105,7 @@ exports.run = function (config: TaskConfig): void {
     // Refresh search index after bulk operations
     if (!dryRun) {
       const repo = connect({
-        repoId: 'com.enonic.cms.default',
+        repoId: 'com.enonic.cms.myproject',
         branch: 'draft'
       });
       repo.refresh('SEARCH');

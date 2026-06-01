@@ -2,6 +2,8 @@
 
 Common patterns combining multiple Enonic XP `/lib/xp/*` libraries.
 
+> **Repository ID is a placeholder.** Examples use `com.enonic.cms.myproject`, which follows the pattern `com.enonic.cms.<project-name>` — replace `myproject` with your content project's name. Avoid the legacy `com.enonic.cms.default` repository: it is deprecated and hidden unless enabled via configuration.
+
 ## Run code as a different user
 
 Use `lib-context` to execute code with elevated permissions:
@@ -11,7 +13,7 @@ import contextLib from '/lib/xp/context';
 import contentLib from '/lib/xp/content';
 
 const result = contextLib.run({
-    repository: 'com.enonic.cms.default',
+    repository: 'com.enonic.cms.myproject',
     branch: 'draft',
     user: { login: 'su', idProvider: 'system' },
     principals: ['role:system.admin']
@@ -89,7 +91,7 @@ eventLib.listener({
 ```ts
 import {connect} from '/lib/xp/node';
 
-const repo = connect({ repoId: 'com.enonic.cms.default', branch: 'draft' });
+const repo = connect({ repoId: 'com.enonic.cms.myproject', branch: 'draft' });
 
 // Create a node
 const node = repo.create({

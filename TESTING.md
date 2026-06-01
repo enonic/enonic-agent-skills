@@ -131,10 +131,10 @@ Run the scanner scripts against the test project:
 
 ```bash
 # From repo root — test all 5 variants of find-enonic-targets.mjs
-node skills/enonic-content-migration/scripts/find-enonic-targets.mjs .test-infra/projects/myproject
-node skills/enonic-webhook-integrator/scripts/find-enonic-targets.mjs .test-infra/projects/myproject
+node skills/enonic-content-management/scripts/find-enonic-targets.mjs .test-infra/projects/myproject
+node skills/enonic-event-manager/scripts/find-enonic-targets.mjs .test-infra/projects/myproject
 node skills/enonic-content-type-generator/scripts/find-enonic-targets.mjs .test-infra/projects/myproject
-node skills/enonic-sandbox-manager/scripts/find-enonic-targets.mjs .test-infra/projects/myproject
+node skills/enonic-app-manager/scripts/find-enonic-targets.mjs .test-infra/projects/myproject
 node skills/enonic-controller-generator/scripts/find-enonic-targets.mjs .test-infra/projects/myproject
 
 # Test Guillotine scanner

@@ -141,7 +141,7 @@ exports.run = function (params) {
 
         // Refresh index after bulk create
         const repo = connect({
-          repoId: 'com.enonic.cms.default',
+          repoId: 'com.enonic.cms.myproject',
           branch: 'draft'
         });
         repo.refresh('SEARCH');
@@ -385,12 +385,12 @@ import { connect } from '/lib/xp/node';
 import contextLib from '/lib/xp/context';
 
 contextLib.run({
-  repository: 'com.enonic.cms.default',
+  repository: 'com.enonic.cms.myproject',
   branch: 'draft',
   principals: ['role:system.admin']
 }, () => {
   const repo = connect({
-    repoId: 'com.enonic.cms.default',
+    repoId: 'com.enonic.cms.myproject',
     branch: 'draft'
   });
 

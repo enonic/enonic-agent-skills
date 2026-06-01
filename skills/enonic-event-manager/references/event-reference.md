@@ -83,6 +83,8 @@ Node events are emitted when repository nodes (including content) change.
 
 ### Event Object Structure
 
+> In the `repo` field below, `com.enonic.cms.myproject` illustrates the `com.enonic.cms.<project-name>` repository-ID pattern; the actual value reflects the content project that emitted the event. The legacy `com.enonic.cms.default` repository is deprecated and hidden unless enabled via configuration.
+
 ```json
 {
   "type": "node.pushed",
@@ -95,7 +97,7 @@ Node events are emitted when repository nodes (including content) change.
         "id": "e1f57280-d672-4cd8-b674-98e26e5b69ae",
         "path": "/content/mysite/blog/my-post",
         "branch": "master",
-        "repo": "com.enonic.cms.default"
+        "repo": "com.enonic.cms.myproject"
       }
     ]
   }

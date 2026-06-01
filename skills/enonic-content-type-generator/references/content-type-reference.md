@@ -747,10 +747,10 @@ Field sets do **not** need a `name` attribute since they are only visual and do 
 
 ## Documentation Links
 
-- Content Types: https://developer.enonic.com/docs/xp/stable/cms/content-types
-- Input Types: https://developer.enonic.com/docs/xp/stable/cms/schemas/input-types
-- Option Sets: https://developer.enonic.com/docs/xp/stable/cms/schemas/option-set
-- Item Sets: https://developer.enonic.com/docs/xp/stable/cms/schemas/item-set
-- Mixins: https://developer.enonic.com/docs/xp/stable/cms/schemas/mixins
-- X-Data: https://developer.enonic.com/docs/xp/stable/cms/x-data
-- Schema System: https://developer.enonic.com/docs/xp/stable/cms/schemas
+- Content Types: https://developer.enonic.com/docs/xp/7.x/cms/content-types
+- Input Types: https://developer.enonic.com/docs/xp/7.x/cms/schemas/input-types
+- Option Sets: https://developer.enonic.com/docs/xp/7.x/cms/schemas/option-set
+- Item Sets: https://developer.enonic.com/docs/xp/7.x/cms/schemas/item-set
+- Mixins: https://developer.enonic.com/docs/xp/7.x/cms/schemas/mixins
+- X-Data: https://developer.enonic.com/docs/xp/7.x/cms/x-data
+- Schema System: https://developer.enonic.com/docs/xp/7.x/cms/schemas
